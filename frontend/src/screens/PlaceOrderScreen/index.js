@@ -68,7 +68,7 @@ function PlaceOrderScreen() {
   return (
     <div>
       <Header></Header>
-      <main className="py-3 mt-9">
+      <main className="py-3" style={{marginTop:'12rem'}}>
         <Container>
           <CheckoutSteps step1 step2 step3 step4 />
           <Row>

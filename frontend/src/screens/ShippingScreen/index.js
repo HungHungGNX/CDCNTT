@@ -28,13 +28,13 @@ function ShippingScreen() {
   return (
     <div>
         <Header></Header>
-      <main className="py-3 mt-9">
+      <main className="py-3" style={{ marginTop:'12rem'}}>
         <Container>
           <FormContainer>
             <CheckoutSteps step1 step2 />
             <Row className="justify-content-md-center">
               <Col md={6}>
-                <h1 style={{ textAlign: "center" }}>Shipping</h1>
+                <h1 style={{ textAlign: "center" }}>Infomation</h1>
                 <Form onSubmit={submitHandler}>
                   <Form.Group controlId="address">
                     <Form.Label className="mt-2">Address</Form.Label>

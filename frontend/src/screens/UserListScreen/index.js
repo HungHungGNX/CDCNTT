@@ -41,7 +41,7 @@ function UserListScreen() {
     }
 
     return (
-        <div className="mt-9 px-5"> 
+        <div className="px-5" style={{marginTop:'12rem'}}> 
         <Header></Header>
             <h1 style={{textAlign: 'center'}} className="highlight">Manager User</h1>
             {loading

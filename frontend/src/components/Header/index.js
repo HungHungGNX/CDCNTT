@@ -158,6 +158,10 @@ function Header() {
                                     <LinkContainer to='/admin/orderlist' style={{fontSize:'12px'}}>
                                         <NavDropdown.Item>Orders</NavDropdown.Item>
                                     </LinkContainer>
+
+                                    <LinkContainer to='/admin/joblist' style={{fontSize:'12px'}}>
+                                        <NavDropdown.Item>Jobs</NavDropdown.Item>
+                                    </LinkContainer>
                                 </NavDropdown>
                             )}
 

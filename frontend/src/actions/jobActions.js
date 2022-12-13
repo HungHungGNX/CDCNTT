@@ -73,3 +73,124 @@ export const listJobDetails = (id) => async (dispatch) => {
 }
 
 
+
+
+export const deleteJob = (id) => async (dispatch, getState) => {
+    try {
+        dispatch({
+            type: JOB_DELETE_REQUEST
+        })
+
+        const {
+            userLogin: { userInfo },
+        } = getState()
+
+        const config = {
+            headers: {
+                Authorization: `Bearer ${userInfo.token}`
+            }
+        }
+
+        const { data } = await axios.delete(
+            `/api/jobs/delete/${id}/`,
+            config
+        )
+
+        dispatch({
+            type: JOB_DELETE_SUCCESS,
+        })
+
+
+    } catch (error) {
+        dispatch({
+            type: JOB_DELETE_FAIL,
+            payload: error.response && error.response.data.detail
+                ? error.response.data.detail
+                : error.message,
+        })
+    }
+}
+
+
+
+
+export const createJob = () => async (dispatch, getState) => {
+    try {
+        dispatch({
+            type: JOB_CREATE_REQUEST
+        })
+
+        const {
+            userLogin: { userInfo },
+        } = getState()
+
+        const config = {
+            headers: {
+                Authorization: `Bearer ${userInfo.token}`
+            }
+        }
+
+        const { data } = await axios.post(
+            `/api/jobs/create/`,
+            {},
+            config
+        )
+        dispatch({
+            type: JOB_CREATE_SUCCESS,
+            payload: data,
+        })
+
+
+    } catch (error) {
+        dispatch({
+            type: JOB_CREATE_FAIL,
+            payload: error.response && error.response.data.detail
+                ? error.response.data.detail
+                : error.message,
+        })
+    }
+}
+
+
+
+export const updateJob = (job) => async (dispatch, getState) => {
+    try {
+        dispatch({
+            type: JOB_UPDATE_REQUEST
+        })
+
+        const {
+            userLogin: { userInfo },
+        } = getState()
+
+        const config = {
+            headers: {
+                Authorization: `Bearer ${userInfo.token}`
+            }
+        }
+
+        const { data } = await axios.put(
+            `/api/jobs/update/${job._id}/`,
+            job,
+            config
+        )
+        dispatch({
+            type: JOB_UPDATE_SUCCESS,
+            payload: data,
+        })
+
+
+        dispatch({
+            type: JOB_DETAILS_SUCCESS,
+            payload: data
+        })
+
+    } catch (error) {
+        dispatch({
+            type: JOB_UPDATE_FAIL,
+            payload: error.response && error.response.data.detail
+                ? error.response.data.detail
+                : error.message,
+        })
+    }
+}

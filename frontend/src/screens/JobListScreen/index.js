@@ -4,24 +4,24 @@ import { Table, Button, Row, Col } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Loader from '../../components/Loader'
 import Message from '../../components/Message'
-import { listProducts, deleteProduct, createProduct } from '../../actions/productActions'
-import { PRODUCT_CREATE_RESET } from '../../constants/productConstants'
+import { listJobs, deleteJob, createJob } from '../../actions/jobActions'
+import { JOB_CREATE_RESET } from '../../constants/jobConstants'
 import {useNavigate} from 'react-router-dom'
 import Header from '../../components/Header'
 
-function ProductListScreen({match}) {
+function JobListScreen() {
 
     const dispatch = useDispatch()
     const navigate = useNavigate();
 
-    const productList = useSelector(state => state.productList)
-    const { loading, error, products, pages, page } = productList
+    const jobList = useSelector(state => state.jobList)
+    const { loading, error, jobs} = jobList
 
-    const productDelete = useSelector(state => state.productDelete)
-    const { loading: loadingDelete, error: errorDelete, success: successDelete } = productDelete
+    const jobDelete = useSelector(state => state.jobDelete)
+    const { loading: loadingDelete, error: errorDelete, success: successDelete } = jobDelete
 
-    const productCreate = useSelector(state => state.productCreate)
-    const { loading: loadingCreate, error: errorCreate, success: successCreate, product: createdProduct } = productCreate
+    const jobCreate = useSelector(state => state.jobCreate)
+    const { loading: loadingCreate, error: errorCreate, success: successCreate, job: createdJob } = jobCreate
 
 
     const userLogin = useSelector(state => state.userLogin)
@@ -29,35 +29,35 @@ function ProductListScreen({match}) {
 
     // let keyword = history.location.search
     useEffect(() => {
-        dispatch({ type: PRODUCT_CREATE_RESET })
+        dispatch({ type: JOB_CREATE_RESET })
 
         if (!userInfo.isAdmin) {
             navigate('/login')
         }
         if (successCreate) {
-            navigate(`/admin/product/${createdProduct._id}/edit`)
+            navigate(`/admin/job/${createdJob._id}/edit`)
         } else {
-            dispatch(listProducts())
+            dispatch(listJobs())
         }
 
-    }, [dispatch, navigate, userInfo, successDelete, successCreate, createdProduct])
+    }, [dispatch, navigate, userInfo, successDelete, successCreate, createdJob])
 
 
     const deleteHandler = (id) => {
 
         if (window.confirm('Are you sure you want to delete this product?')) {
-            dispatch(deleteProduct(id))
+            dispatch(deleteJob(id))
         }
     }
 
     const createProductHandler = () => {
-        dispatch(createProduct())
+        dispatch(createJob())
     }
 
     return (
         <div className="px-5" style={{marginTop:'12rem'}}>
             <Header></Header>
-            <h1 style={{textAlign: 'center'}} className="highlight">Courses</h1>
+            <h1 style={{textAlign: 'center'}} className="highlight">JOB</h1>
             <Row className='align-items-center'>
                 <Col md={7}>
                     
@@ -65,7 +65,7 @@ function ProductListScreen({match}) {
 
                 <Col className='text-right' md={3}>
                     <Button  onClick={createProductHandler} className="mb-4 rounded-pill btn-sign-in">
-                        <i className='fas fa-plus'></i> Create Product
+                        <i className='fas fa-plus'></i> Create Job
                     </Button>
                 </Col>
             </Row>
@@ -88,30 +88,27 @@ function ProductListScreen({match}) {
                                     <tr>
                                         <th>ID</th>
                                         <th>NAME</th>
-                                        <th>PRICE</th>
-                                        <th>CATEGORY</th>
-                                        <th>BRAND</th>
+                                        <th>QUANTITY</th>
+                                        <th>DESCRIPTION</th>
                                         <th></th>
                                     </tr>
                                 </thead>
 
                                 <tbody>
-                                    {products.map(product => (
-                                        <tr key={product._id}>
-                                            <td>{product._id}</td>
-                                            <td>{product.name}</td>
-                                            <td>${product.price}</td>
-                                            <td>{product.category}</td>
-                                            <td>{product.brand}</td>
-
+                                    {jobs.map(job => (
+                                        <tr key={job._id}>
+                                            <td>{job._id}</td>
+                                            <td>{job.name}</td>
+                                            <td>{job.countInStock}</td>
+                                            <td>{job.description}</td>
                                             <td>
-                                                <LinkContainer to={`/admin/product/${product._id}/edit`}>
+                                                <LinkContainer to={`/admin/job/${job._id}/edit`}>
                                                     <Button variant='light' className='btn-sm'>
                                                         <i className='fas fa-edit'></i>
                                                     </Button>
                                                 </LinkContainer>
 
-                                                <Button variant='danger' className='btn-sm' onClick={() => deleteHandler(product._id)}>
+                                                <Button variant='danger' className='btn-sm' onClick={() => deleteHandler(job._id)}>
                                                     <i className='fas fa-trash'></i>
                                                 </Button>
                                             </td>
@@ -125,4 +122,4 @@ function ProductListScreen({match}) {
     )
 }
 
-export default ProductListScreen
+export default JobListScreen

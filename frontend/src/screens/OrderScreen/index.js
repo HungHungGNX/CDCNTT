@@ -102,7 +102,7 @@ function OrderScreen({ match }) {
   ) : (
     <div>
       <Header></Header>
-      <main className="py-3 mt-9">
+      <main className="py-3" style={{marginTop:'12rem'}}>
         <Container>
           <h1
             style={{
@@ -118,7 +118,7 @@ function OrderScreen({ match }) {
               <Card>
                 <ListGroup variant="flush">
                   <ListGroup.Item>
-                    <h2 style={{ textAlign: "center" }}>Shipping</h2>
+                    <h2 style={{ textAlign: "center" }}>Confirm</h2>
                     <p>
                       <strong>Name: </strong> {order.user.name}
                     </p>
@@ -141,7 +141,7 @@ function OrderScreen({ match }) {
                         Delivered on {order.deliveredAt}
                       </Message>
                     ) : (
-                      <Message variant="warning">Not Delivered</Message>
+                      <Message variant="warning">Not Checked</Message>
                     )}
                   </ListGroup.Item>
 

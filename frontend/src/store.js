@@ -29,7 +29,9 @@ import {
 
 import { teacherListReducer,teacherDetailsReducer,teacherReviewCreateReducer } from './reducers/teacherReducers'
 
-import { jobListReducer, jobDetailsReducer } from './reducers/jobReducers'
+import { jobListReducer, jobDetailsReducer, jobDeleteReducer,
+  jobCreateReducer,
+  jobUpdateReducer, } from './reducers/jobReducers'
 
 import {CvCreateReducer,cvUpdateReducer,cvDetailsReducer,cvListMyReducer} from './reducers/cvReducers'
 
@@ -65,6 +67,9 @@ const reducer = combineReducers({
   cvUpdate: cvUpdateReducer,
   cvDetails: cvDetailsReducer,
   cvListMy:cvListMyReducer,
+  jobDelete: jobDeleteReducer,
+  jobCreate: jobCreateReducer,
+  jobUpdate: jobUpdateReducer,
 });
 
 const cartItemsFromStorage = localStorage.getItem("cartItems")

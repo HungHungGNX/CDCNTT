@@ -58,6 +58,40 @@ def createCv(request, pk):
 
 
 @api_view(['POST'])
+@permission_classes([IsAdminUser])
+def createJob(request):
+    user = request.user
+
+    product = Job.objects.create(
+        user=user,
+        name='Sample Name',
+        countInStock=50,
+        description=''
+    )
+
+    serializer = JobSerializer(product, many=False)
+    return Response(serializer.data)
+
+@api_view(['PUT'])
+@permission_classes([IsAdminUser])
+def updateJob(request, pk):
+    data = request.data
+    job = Job.objects.get(_id=pk)
+    job.name = data['name']
+    job.countInStock = data['countInStock']
+    job.description = data['description']
+    job.save()
+    serializer = JobSerializer(job, many=False)
+    return Response(serializer.data)
+
+@api_view(['DELETE'])
+@permission_classes([IsAdminUser])
+def deletejob(request, pk):
+    job = Job.objects.get(_id=pk)
+    job.delete()
+    return Response('Job Deleted')
+
+@api_view(['POST'])
 def uploadImageCv(request):
     data = request.data
 

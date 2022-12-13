@@ -36,6 +36,8 @@ import CvEditScreen from "./screens/CvEditScreen"
 import MyCvScreen from "./screens/MyCvScreen"
 import AboutScreen from "./screens/AboutScreen"
 import ContactScreen from "./screens/ContactScreen"
+import JobListScreen from "./screens/JobListScreen"
+import JobEditScreen from "./screens/JobEditScreen"
 
 
 
@@ -63,6 +65,8 @@ function App() {
         */}
         <Route path="/admin/userlist" element={<UserListScreen />} />
         <Route path='/admin/user/:id/edit' element={<UserEditScreen />} />
+        <Route path='/admin/joblist' element={<JobListScreen />} />
+        <Route path='/admin/job/:id/edit' element={<JobEditScreen />} />
         <Route path="/profile" element={<ProfileScreen />} />
         <Route path='/admin/productlist' element={<ProductListScreen />} />
         <Route path='/admin/product/:id/edit' element={<ProductEditScreen />} />
