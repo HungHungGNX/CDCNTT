@@ -27,7 +27,13 @@ import {
   orderCreateReducer,orderDetailsReducer,orderPayReducer,orderDeliverReducer,orderListMyReducer,orderListReducer,
 } from './reducers/orderReducers'
 
-import { teacherListReducer } from './reducers/teacherReducers'
+import { teacherListReducer,teacherDetailsReducer,teacherReviewCreateReducer } from './reducers/teacherReducers'
+
+import { jobListReducer, jobDetailsReducer } from './reducers/jobReducers'
+
+import {CvCreateReducer,cvUpdateReducer,cvDetailsReducer,cvListMyReducer} from './reducers/cvReducers'
+
+
 
 const reducer = combineReducers({
   productList: productListReducer,
@@ -50,7 +56,15 @@ const reducer = combineReducers({
   orderDeliver: orderDeliverReducer,
   orderListMy: orderListMyReducer,
   orderList: orderListReducer,
-  teacherList: teacherListReducer
+  teacherList: teacherListReducer,
+  teacherDetails:teacherDetailsReducer,
+  teacherReviewCreate: teacherReviewCreateReducer,
+  jobList:jobListReducer,
+  jobDetails:jobDetailsReducer,
+  CvCreate: CvCreateReducer,
+  cvUpdate: cvUpdateReducer,
+  cvDetails: cvDetailsReducer,
+  cvListMy:cvListMyReducer,
 });
 
 const cartItemsFromStorage = localStorage.getItem("cartItems")

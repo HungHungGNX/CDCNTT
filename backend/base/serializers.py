@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
 from rest_framework_simplejwt.tokens import RefreshToken
-from .models import Product, Order, OrderItem, ShippingAddress, Review, Teacher, ReviewTeacher
+from .models import Product, Order, OrderItem, ShippingAddress, Review, Teacher, ReviewTeacher, Job ,Cv
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -74,6 +74,24 @@ class TeacherSerializer(serializers.ModelSerializer):
         serializer = ReviewTeacherSerializer(reviews, many=True)
         return serializer.data
 
+class CvSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Cv
+        fields = '__all__'
+
+class JobSerializer(serializers.ModelSerializer):
+    cv = serializers.SerializerMethodField(read_only=True)
+
+    class Meta:
+        model = Job
+        fields ='__all__'
+    
+    def get_cv(self, obj):
+        cv = obj.cv_set.all()
+        serializer = CvSerializer(cv,many=True)
+        return serializer.data
+    
 
 class ShippingAddressSerializer(serializers.ModelSerializer):
     class Meta:

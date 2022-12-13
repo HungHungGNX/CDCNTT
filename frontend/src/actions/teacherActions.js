@@ -71,3 +71,44 @@ export const listTeacherDetails = (id) => async (dispatch) => {
         })
     }
 }
+
+
+
+
+export const createTeacherReview = (teacherId, review) => async (dispatch, getState) => {
+    try {
+        dispatch({
+            type: TEACHER_CREATE_REVIEW_REQUEST
+        })
+
+        const {
+            userLogin: { userInfo },
+        } = getState()
+
+        const config = {
+            headers: {
+                Authorization: `Bearer ${userInfo.token}`
+            }
+        }
+
+        const { data } = await axios.post(
+            `/api/teachers/${teacherId}/reviews/`,
+            review,
+            config
+        )
+        dispatch({
+            type: TEACHER_CREATE_REVIEW_SUCCESS,
+            payload: data,
+        })
+
+
+
+    } catch (error) {
+        dispatch({
+            type: TEACHER_CREATE_REVIEW_FAIL,
+            payload: error.response && error.response.data.detail
+                ? error.response.data.detail
+                : error.message,
+        })
+    }
+}

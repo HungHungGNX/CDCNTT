@@ -3,23 +3,34 @@ import styles from "./Header.module.css";
 import clsx from "clsx";
 import logo from "../../assets/img/img_homepage/logo.svg";
 import {Link} from 'react-router-dom'
+import { useDispatch, useSelector } from "react-redux";
+import { Navbar, Nav, Container, Row, NavDropdown } from "react-bootstrap";
+import { LinkContainer } from "react-router-bootstrap";
+import { logout } from "../../actions/userActions";
 
 function Header() {
- 
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+
+  const dispatch = useDispatch();
+
+  const logoutHandler = () => {
+    dispatch(logout());
+  };
 
   return (
     <div>
       <header className={clsx(styles.header)} data-header style={{position: "fixed"}}>
         <div className={clsx(styles.container)}>
-          <a href="#" className={clsx(styles.logo)}>
+          <Link to="/" className={clsx(styles.logo)}>
             <img src={logo} width="162" height="50" alt="EduWeb logo"></img>
-          </a>
+          </Link>
 
           <nav className={clsx(styles.navbar)} data-navbar>
             <div className={clsx(styles.wrapper)}>
-              <a href="#" className={clsx(styles.logo)}>
+              <Link to="/" className={clsx(styles.logo)}>
                 <img src={logo} width="162" height="50" alt="EduWeb logo"></img>
-              </a>
+              </Link>
 
               <button
                 className={clsx(styles.navCloseBtn)}
@@ -52,40 +63,48 @@ function Header() {
               </li>
 
               <li className={clsx(styles.navbarItem)}>
-                <a
-                  href="/teacher"
+                <Link
+                  to="/teacher"
                   className={clsx(styles.navbarLink)}
                   data-nav-link
                 >
                   Teacher
-                </a>
+                </Link>
               </li>
 
               <li className={clsx(styles.navbarItem)}>
-                <a
-                  href="#blog"
+                <Link to="/job" className={clsx(styles.navbarLink)} data-nav-link>
+                  Job
+                </Link>
+              </li>
+
+              <li className={clsx(styles.navbarItem)}>
+                <Link
+                  to="/mycv"
                   className={clsx(styles.navbarLink)}
                   data-nav-link
                 >
-                  Blog
-                </a>
+                  MyCv
+                </Link>
               </li>
 
               <li className={clsx(styles.navbarItem)}>
-                <a
-                  href="#about"
+                <Link
+                  to="/about"
                   className={clsx(styles.navbarLink)}
                   data-nav-link
                 >
                   About
-                </a>
+                </Link>
               </li>
 
               <li className={clsx(styles.navbarItem)}>
-                <a href="#" className={clsx(styles.navbarLink)} data-nav-link>
+                <Link to="/contact" className={clsx(styles.navbarLink)} data-nav-link>
                   Contact
-                </a>
+                </Link>
               </li>
+
+
             </ul>
           </nav>
 
@@ -103,19 +122,45 @@ function Header() {
               aria-label="cart"
               title="Cart"
             >
-              <ion-icon name="cart-outline" aria-hidden="true"></ion-icon>
-
-              <span className={clsx(styles.btnBadge)}>0</span>
+             <Link to="/cart"><ion-icon name="cart-outline" aria-hidden="true"></ion-icon></Link> 
             </button>
 
-            <a href="#" className={clsx(styles.btn, styles.hasBefore)}>
-              <span className={clsx(styles.span)}>Try for free</span>
+            {userInfo ? (
+              <NavDropdown title={userInfo.name} id="username" style={{fontSize:'16px'}}>
+                <LinkContainer to="/profile" style={{fontSize:'12px'}}>
+                  <NavDropdown.Item >Profile</NavDropdown.Item>
+                </LinkContainer>
+                <NavDropdown.Item onClick={logoutHandler} style={{fontSize:'12px'}}>
+                  Logout
+                </NavDropdown.Item>
+              </NavDropdown>
+            ) : (
+              <Link to="/login" className={clsx(styles.btn, styles.hasBefore)}>
+              <span className={clsx(styles.span)} >Login</span>
 
               <ion-icon
                 name="arrow-forward-outline"
                 aria-hidden="true"
               ></ion-icon>
-            </a>
+            </Link>
+            )}
+
+            {userInfo && userInfo.isAdmin && (
+                                <NavDropdown title='💎' id='adminmenue' style={{fontSize:'12px'}}>
+                                    <LinkContainer to='/admin/userlist' style={{fontSize:'12px'}}>
+                                        <NavDropdown.Item>Users</NavDropdown.Item>
+                                    </LinkContainer>
+
+                                    <LinkContainer to='/admin/productlist' style={{fontSize:'12px'}}>
+                                        <NavDropdown.Item>Products</NavDropdown.Item>
+                                    </LinkContainer>
+
+                                    <LinkContainer to='/admin/orderlist' style={{fontSize:'12px'}}>
+                                        <NavDropdown.Item>Orders</NavDropdown.Item>
+                                    </LinkContainer>
+                                </NavDropdown>
+                            )}
+
 
             <button
               className={clsx(styles.headerActionBtn)}

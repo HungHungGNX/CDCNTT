@@ -1,66 +1,52 @@
 import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import {
-  Row,
-  Col,
-  Image,
-  ListGroup,
-  Button,
-  Card,
-  Form,
-  Container,
-} from "react-bootstrap";
+import {Row, Col, Image, ListGroup, Button, Card, Form, Container} from "react-bootstrap";
 import Rating from "../../components/Rating";
 import Loader from "../../components/Loader";
 import Message from "../../components/Message";
-import { useNavigate } from "react-router-dom";
+import styles from './TeacherScreenDetails.module.css'
 import {
-  listProductDetails,
-  createProductReview,
-} from "../../actions/productActions";
-import { PRODUCT_CREATE_REVIEW_RESET } from "../../constants/productConstants";
+  listTeacherDetails,
+  createTeacherReview,
+} from "../../actions/teacherActions";
+import { TEACHER_CREATE_REVIEW_RESET } from "../../constants/teacherConstants";
 import Header from "../../components/Header";
 import '../../assets/css/style.css'
 
-function TeacherScreenDetails({ match }) {
+function TeacherScreenDetails() {
   const { id } = useParams();
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const [qty, setQty] = useState(1);
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState("");
 
-  const productDetails = useSelector((state) => state.productDetails);
-  const { loading, error, product } = productDetails;
+  const teacherDetails = useSelector((state) => state.teacherDetails);
+  const { loading, error, teacher } = teacherDetails;
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
-  const productReviewCreate = useSelector((state) => state.productReviewCreate);
+  const teacherReviewCreate = useSelector((state) => state.teacherReviewCreate);
   const {
-    loading: loadingProductReview,
-    error: errorProductReview,
-    success: successProductReview,
-  } = productReviewCreate;
+    loading: loadingTeacherReview,
+    error: errorTeacherReview,
+    success: successTeacherReview,
+  } = teacherReviewCreate;
 
   useEffect(() => {
-    if (successProductReview) {
+    if (successTeacherReview) {
       setRating(0)
       setComment('')
-      dispatch({ type: PRODUCT_CREATE_REVIEW_RESET })
+      dispatch({ type: TEACHER_CREATE_REVIEW_RESET })
    }
-    dispatch(listProductDetails(id));
-  }, [dispatch, match,successProductReview]);
+    dispatch(listTeacherDetails(id));
+  }, [dispatch,successTeacherReview]);
 
-  const addToCartHandler = () => {
-    navigate(`/cart/${id}?qty=${qty}`);
-  };
 
   const submitHandler = (e) => {
     e.preventDefault()
-    dispatch(createProductReview(
+    dispatch(createTeacherReview(
         id, {
         rating,
         comment
@@ -71,9 +57,9 @@ function TeacherScreenDetails({ match }) {
   return (
     <div>
       <Header />
-      <main className="py-3 mt-9">
+      <main className="py-3 mtBig">
         <Container>
-          <Link to="/" className="btn btn-light my-3">
+          <Link to="/" className="btn btn-light my-3" style={{fontSize:'12px'}}>
             Go Back
           </Link>
           {loading ? (
@@ -82,86 +68,40 @@ function TeacherScreenDetails({ match }) {
             <Message variant="danger">{error}</Message>
           ) : (
             <div>
-              <Row>
+              <Row className ='mt-4'>
                 <Col md={4}>
-                  <Image src={product.image} alt={product.name} fluid />
+                  <Image src={teacher.image} alt={teacher.name} fluid style ={{borderRadius:'6px'}} />
                 </Col>
-                <Col md={3} varinat="flush">
+                <Col md={6} varinat="flush"  style={{fontSize:'16px'}}>
                   <ListGroup varinat="flush">
                     <ListGroup.Item>
-                      <h3>{product.name}</h3>
+                      <h3>{teacher.name}</h3>
                     </ListGroup.Item>
 
                     <ListGroup.Item>
                       <Rating
-                        value={product.rating}
-                        text={`${product.numReviews} ratings`}
+                        value={teacher.rating}
+                        text={`${teacher.numReviews} ratings`}
                         color="#f8e825"
                       />
                     </ListGroup.Item>
 
-                    <ListGroup.Item>Price: ${product.price}</ListGroup.Item>
 
                     <ListGroup.Item>
-                      Description: {product.description}
+                      Description: {teacher.description}
                     </ListGroup.Item>
                   </ListGroup>
                 </Col>
-
-                <Col md={3}>
-                  <Card>
-                    <ListGroup variant="flush">
-                      <ListGroup.Item>
-                        <Row>
-                          <Col>Price:</Col>
-                          <Col>
-                            <strong>${product.price}</strong>
-                          </Col>
-                        </Row>
-                      </ListGroup.Item>
-                      <ListGroup.Item>
-                        <Row>
-                          <Col>Status:</Col>
-                          <Col>
-                            {product.countInStock > 0
-                              ? "In Stock"
-                              : "Out of stock"}
-                          </Col>
-                        </Row>
-                      </ListGroup.Item>
-                      {product.countInStock > 0 && (
-                        <ListGroup.Item>
-                          <Row>
-                            <Col>Qty</Col>
-                            <Col>
-                                {product.countInStock}
-                            </Col>
-                          </Row>
-                        </ListGroup.Item>
-                      )}
-                      <ListGroup.Item>
-                        <Button
-                          onClick={addToCartHandler}
-                          className="btn-block rounded-pill btn-add-cart"
-                          disabled={product.countInStock == 0}
-                          type="button"
-                        >
-                          Choose course
-                        </Button>
-                      </ListGroup.Item>
-                    </ListGroup>
-                  </Card>
-                </Col>
               </Row>
               <Row>
-                <Col md={6}>
+                <Col md={6} style={{fontSize:'16px'}} className="mt-5">
                   <h4>Reviews</h4>
-                  {product.reviews.length === 0 && (
+                  {teacher.reviews.length === 0 && (
                     <Message variant="info">No Reviews</Message>
                   )}
 
                   <ListGroup variant="flush">
-                    {product.reviews.map((review) => (
+                    {teacher.reviews.map((review) => (
                       <ListGroup.Item key={review._id}>
                         <strong>{review.name}</strong>
                         <Rating value={review.rating} color="#f8e825" />
@@ -173,12 +113,12 @@ function TeacherScreenDetails({ match }) {
                     <ListGroup.Item>
                       <h4>Write a review</h4>
 
-                      {loadingProductReview && <Loader />}
-                      {successProductReview && (
+                      {loadingTeacherReview && <Loader />}
+                      {successTeacherReview && (
                         <Message variant="success">Review Submitted</Message>
                       )}
-                      {errorProductReview && (
-                        <Message variant="danger">{errorProductReview}</Message>
+                      {errorTeacherReview && (
+                        <Message variant="danger">{errorTeacherReview}</Message>
                       )}
 
                       {userInfo ? (
@@ -187,6 +127,7 @@ function TeacherScreenDetails({ match }) {
                             <Form.Label>Rating</Form.Label>
                             <Form.Control
                               as="select"
+                              style={{fontSize:'16px'}} 
                               value={rating}
                               onChange={(e) => setRating(e.target.value)}
                             >
@@ -205,13 +146,15 @@ function TeacherScreenDetails({ match }) {
                               as="textarea"
                               row="5"
                               value={comment}
+                              style={{fontSize:'16px'}} 
                               onChange={(e) => setComment(e.target.value)}
                             ></Form.Control>
                           </Form.Group>
 
                           <Button
-                            disabled={loadingProductReview}
+                            disabled={loadingTeacherReview}
                             type="submit"
+                            style={{fontSize:'11px'}} 
                             className="my-3"
                             variant="primary">
                             Submit

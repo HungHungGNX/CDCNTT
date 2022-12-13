@@ -9,8 +9,8 @@ function Teacher({ teacher }) {
 
   return (
     <div className="pro">
-      <Link to={`/coursedetails/${teacher._id}`}>
-        <img src={teacher.image} alt=""></img>
+      <Link to={`/teacherdetails/${teacher._id}`}>
+        <img src={teacher.image} alt=""></img> 
       </Link>
       <div className="des">
         <span>Teacher</span>

@@ -71,9 +71,9 @@ function CourseScreenDetails({ match }) {
   return (
     <div>
       <Header />
-      <main className="py-3 mt-9">
+      <main className="py-3 mtBig">
         <Container>
-          <Link to="/" className="btn btn-light my-3">
+          <Link to="/" className="btn btn-light my-3" style={{fontSize:'13px'}} >
             Go Back
           </Link>
           {loading ? (
@@ -82,7 +82,7 @@ function CourseScreenDetails({ match }) {
             <Message variant="danger">{error}</Message>
           ) : (
             <div>
-              <Row>
+              <Row className='mt-4' style={{fontSize:'16px'}} >
                 <Col md={4}>
                   <Image src={product.image} alt={product.name} fluid />
                 </Col>
@@ -112,8 +112,8 @@ function CourseScreenDetails({ match }) {
                   <Card>
                     <ListGroup variant="flush">
                       <ListGroup.Item>
-                        <Row>
-                          <Col>Price:</Col>
+                        <Row style={{fontSize:'16px'}} >
+                          <Col>Price</Col>
                           <Col>
                             <strong>${product.price}</strong>
                           </Col>
@@ -121,7 +121,7 @@ function CourseScreenDetails({ match }) {
                       </ListGroup.Item>
                       <ListGroup.Item>
                         <Row>
-                          <Col>Status:</Col>
+                          <Col>Status</Col>
                           <Col>
                             {product.countInStock > 0
                               ? "In Stock"
@@ -143,6 +143,7 @@ function CourseScreenDetails({ match }) {
                         <Button
                           onClick={addToCartHandler}
                           className="btn-block rounded-pill btn-add-cart"
+                          style={{fontSize:'10px'}} 
                           disabled={product.countInStock == 0}
                           type="button"
                         >
@@ -153,7 +154,7 @@ function CourseScreenDetails({ match }) {
                   </Card>
                 </Col>
               </Row>
-              <Row>
+              <Row className = 'mt-4' style={{fontSize:'16px'}} >
                 <Col md={6}>
                   <h4>Reviews</h4>
                   {product.reviews.length === 0 && (
@@ -188,6 +189,7 @@ function CourseScreenDetails({ match }) {
                             <Form.Control
                               as="select"
                               value={rating}
+                              style={{fontSize:'16px'}} 
                               onChange={(e) => setRating(e.target.value)}
                             >
                               <option value="">Select...</option>
@@ -204,6 +206,7 @@ function CourseScreenDetails({ match }) {
                             <Form.Control
                               as="textarea"
                               row="5"
+                              style={{fontSize:'16px'}} 
                               value={comment}
                               onChange={(e) => setComment(e.target.value)}
                             ></Form.Control>
@@ -213,6 +216,7 @@ function CourseScreenDetails({ match }) {
                             disabled={loadingProductReview}
                             type="submit"
                             className="my-3"
+                            style={{fontSize:'11px'}} 
                             variant="primary">
                             Submit
                           </Button>

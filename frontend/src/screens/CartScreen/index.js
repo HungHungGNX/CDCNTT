@@ -51,9 +51,9 @@ function CartScreen({ match }) {
   return (
     <div>
       <Header></Header>
-      <main className="py-3 mt-9">
+      <main className="py-3 mtBig">
         <Container>
-          <Row>
+          <Row className="mtBig">
             <Col md={8}>
               <h1>Shopping Cart</h1>
               {cartItems.length === 0 ? (
@@ -73,25 +73,25 @@ function CartScreen({ match }) {
                             rounded
                           />
                         </Col>
-                        <Col md={3}>
+                        <Col md={3} style = {{fontSize:'16px'}}>
                           <Link to={`/coursedetails/${item.product}`}>
                             {item.name}
                           </Link>
                         </Col>
 
-                        <Col md={2}>${item.price}</Col>
+                        <Col md={2} style = {{fontSize:'16px'}}>${item.price}</Col>
 
-                        <Col md={2}>
-                            Teacher: {item.brand}
+                        <Col md={2} style = {{fontSize:'16px'}}>
+                            Teacher {item.brand}
                         </Col>
 
-                        <Col md={2}>
+                        <Col md={2} style = {{fontSize:'16px'}}>
                           <Button
                             type="button"
                             variant="light"
                             onClick={() => removeFromCartHandler(item.product)}
-                          >
-                            <i className="fa fa-trash"></i>
+                          > 
+                            <i className="fa fa-trash" style = {{fontSize:'16px'}}></i>
                           </Button>
                         </Col>
                       </Row>
@@ -103,8 +103,8 @@ function CartScreen({ match }) {
             <Col md={4}>
               <Card>
                 <ListGroup variant="flush">
-                  <ListGroup.Item>
-                    <h2>
+                  <ListGroup.Item style = {{fontSize:'12px'}}>
+                    <h2 style = {{fontSize:'16px'}}>
                       Subtotal (
                       {cartItems.reduce((acc, item) => acc + item.qty, 0)})
                       items
@@ -120,6 +120,7 @@ function CartScreen({ match }) {
                       className="btn-block rounded-pill btn-proceed-checkout"
                       disabled={cartItems.length === 0}
                       onClick={checkoutHandler}
+                      style = {{fontSize:'10px'}}
                     >
                       Proceed To Checkout
                     </Button>

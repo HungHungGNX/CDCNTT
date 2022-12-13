@@ -27,7 +27,6 @@ function TeacherScreen() {
     <div>
       <Header />
       <section id="page-header">
-
       </section>
       <Container fluid className="mt-4">
       {/* <SearchBox></SearchBox> */}

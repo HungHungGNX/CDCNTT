@@ -92,6 +92,7 @@ class Teacher(models.Model):
       return self.name
 
 
+
 class ReviewTeacher(models.Model):
     teacher = models.ForeignKey(Teacher,on_delete=models.SET_NULL,null = True)
     user = models.ForeignKey(User,on_delete=models.SET_NULL,null = True)
@@ -103,3 +104,31 @@ class ReviewTeacher(models.Model):
 
     def __str__(self):
         return str(self.rating)
+
+
+class Job(models.Model):
+    user = models.ForeignKey(User,on_delete=models.SET_NULL,null = True)
+    name = models.CharField(max_length=200,null = True,blank = True)
+    image = models.ImageField(null = True,blank = True,default = '/placeholder.png')
+    description = models.TextField(max_length=1000,null = True,blank = True)
+    countInStock = models.IntegerField(null=True,blank = True,default=0)
+    createAt = models.DateTimeField(auto_now_add=True)
+    _id = models.AutoField(primary_key=True,editable=False)
+
+    def __str__(self):
+      return self.name
+
+
+
+class Cv(models.Model):
+    user = models.ForeignKey(User,on_delete=models.SET_NULL,null = True)
+    job = models.ForeignKey(Job,on_delete=models.SET_NULL,null = True)
+    name = models.CharField(max_length=200,null = True,blank = True)
+    image = models.ImageField(null = True,blank = True,default = '/placeholder.png')
+    description = models.TextField(max_length=1000,null = True,blank = True)
+    createAt = models.DateTimeField(auto_now_add=True)
+    _id = models.AutoField(primary_key=True,editable=False)
+
+    def __str__(self):
+      return self.name
+

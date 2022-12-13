@@ -1,0 +1,2022 @@
+:root {
+    /**
+       * colors
+       */
+  
+    --selective-yellow: hsl(42, 94%, 55%);
+    --eerie-black-1: hsl(0, 0%, 9%);
+    --eerie-black-2: hsl(180, 3%, 7%);
+    --quick-silver: hsl(0, 0%, 65%);
+    --radical-red: hsl(351, 83%, 61%);
+    --light-gray: hsl(0, 0%, 80%);
+    --isabelline: hsl(36, 33%, 94%);
+    --gray-x-11: hsl(0, 0%, 73%);
+    --kappel_15: hsla(170, 75%, 41%, 0.15);
+    --platinum: hsl(0, 0%, 90%);
+    --gray-web: hsl(0, 0%, 50%);
+    --black_80: hsla(0, 0%, 0%, 0.8);
+    --white_50: hsla(0, 0%, 100%, 0.5);
+    --black_50: hsla(0, 0%, 0%, 0.5);
+    --black_30: hsla(0, 0%, 0%, 0.3);
+    --kappel: hsl(170, 75%, 41%);
+    --white: hsl(0, 0%, 100%);
+  
+    /**
+       * gradient color
+       */
+  
+    --gradient: linear-gradient(
+      -90deg,
+      hsl(151, 58%, 46%) 0%,
+      hsl(170, 75%, 41%) 100%
+    );
+  
+    /**
+       * typography
+       */
+  
+    --ff-league_spartan: "League Spartan", sans-serif;
+    --ff-poppins: "Poppins", sans-serif;
+  
+    --fs-1: 4.2rem;
+    --fs-2: 3.2rem;
+    --fs-3: 2.3rem;
+    --fs-4: 1.8rem;
+    --fs-5: 1.5rem;
+    --fs-6: 1.4rem;
+    --fs-7: 1.3rem;
+  
+    --fw-500: 500;
+    --fw-600: 600;
+  
+    /**
+       * spacing
+       */
+  
+    --section-padding: 75px;
+  
+    /**
+       * shadow
+       */
+  
+    --shadow-1: 0 6px 15px 0 hsla(0, 0%, 0%, 0.05);
+    --shadow-2: 0 10px 30px hsla(0, 0%, 0%, 0.06);
+    --shadow-3: 0 10px 50px 0 hsla(220, 53%, 22%, 0.1);
+  
+    /**
+       * radius
+       */
+  
+    --radius-pill: 500px;
+    --radius-circle: 50%;
+    --radius-3: 3px;
+    --radius-5: 5px;
+    --radius-10: 10px;
+  
+    /**
+       * transition
+       */
+  
+    --transition-1: 0.25s ease;
+    --transition-2: 0.5s ease;
+    --cubic-in: cubic-bezier(0.51, 0.03, 0.64, 0.28);
+    --cubic-out: cubic-bezier(0.33, 0.85, 0.4, 0.96);
+  }
+  
+  /*-----------------------------------*\
+    #RESET
+  \*-----------------------------------*/
+  
+  *,
+  *::before,
+  *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  li {
+    list-style: none;
+  }
+  
+  a,
+  img,
+  span,
+  data,
+  input,
+  button,
+  ion-icon {
+    display: block;
+  }
+  
+  a {
+    color: inherit !important;
+    text-decoration: none;
+  }
+  
+  img {
+    height: auto;
+  }
+  
+  input,
+  button {
+    background: none;
+    border: none;
+    font: inherit;
+  }
+  
+  input {
+    width: 100%;
+  }
+  
+  button {
+    cursor: pointer;
+  }
+  
+  ion-icon {
+    pointer-events: none;
+  }
+  
+  address {
+    font-style: normal;
+  }
+  
+  html {
+    font-family: var(--ff-poppins);
+    font-size: 10px;
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    background-color: var(--white);
+    color: var(--gray-web);
+    font-size: 1.6rem;
+    line-height: 1.75;
+  }
+  
+  :focus-visible {
+    outline-offset: 4px;
+  }
+  
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background-color: hsl(0, 0%, 98%);
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: hsl(0, 0%, 80%);
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: hsl(0, 0%, 70%);
+  }
+  
+  /*-----------------------------------*\
+    #REUSED STYLE
+  \*-----------------------------------*/
+  
+  .container {
+    padding-inline: 15px;
+  }
+  
+  .section {
+    padding-block: var(--section-padding);
+  }
+  
+  .shape {
+    position: absolute;
+    display: none;
+  }
+  
+  .hasBgImage {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .h1,
+  .h2,
+  .h3 {
+    color: var(--eerie-black-1);
+    font-family: var(--ff-league_spartan);
+    line-height: 1;
+  }
+  
+  .h1,
+  .h2 {
+    font-weight: var(--fw-600);
+  }
+  
+  .h1 {
+    font-size: var(--fs-1);
+  }
+  
+  .h2 {
+    font-size: var(--fs-2);
+  }
+  
+  .h3 {
+    font-size: var(--fs-3);
+    font-weight: var(--fw-500);
+  }
+  
+  .sectionTitle {
+    --color: var(--radical-red);
+    text-align: center;
+  }
+  
+  .sectionTitle .span {
+    display: inline-block;
+    color: var(--color);
+  }
+  
+  .btn {
+    background-color: var(--kappel);
+    color: var(--white);
+    font-family: var(--ff-league_spartan);
+    font-size: var(--fs-4);
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    max-width: max-content;
+    padding: 10px 20px;
+    border-radius: var(--radius-5);
+    overflow: hidden;
+  }
+  
+  .hasBefore,
+  .hasAfter {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .hasBefore::before,
+  .hasAfter::after {
+    position: absolute;
+    content: "";
+  }
+  
+  .btn::before {
+    inset: 0;
+    background-image: var(--gradient);
+    z-index: -1;
+    border-radius: inherit;
+    transform: translateX(-100%);
+    transition: var(--transition-2);
+  }
+  
+  .btn:is(:hover, :focus)::before {
+    transform: translateX(0);
+  }
+  
+  .imgHolder {
+    aspect-ratio: var(--width) / var(--height);
+    background-color: var(--light-gray);
+    overflow: hidden;
+  }
+  
+  .imgCover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .sectionSubtitle {
+    font-size: var(--fs-5);
+    text-transform: uppercase;
+    font-weight: var(--fw-500);
+    letter-spacing: 1px;
+    text-align: center;
+    margin-block-end: 15px;
+  }
+  
+  .sectionText {
+    font-size: var(--fs-5);
+    text-align: center;
+    margin-block: 15px 25px;
+  }
+  
+  .gridList {
+    display: grid;
+    gap: 30px;
+  }
+  
+  .categoryCard,
+  .statsCard {
+    background-color: hsla(var(--color), 0.1);
+  }
+  
+  :is(.course, .blog) .sectionTitle {
+    margin-block-end: 40px;
+  }
+  
+  /***************************************************************
+  
+  Header
+  
+  */
+  
+  .header .btn {
+    display: none;
+  }
+  
+  .header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--white);
+    padding-block: 12px;
+    box-shadow: var(--shadow-1);
+    z-index: 4;
+  }
+  
+  .header.active {
+    position: fixed;
+  }
+  
+  .header .container,
+  .headerActions,
+  .navbar .wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .headerActionBtn,
+  .navCloseBtn {
+    position: relative;
+    color: var(--eerie-black-1);
+    font-size: 24px;
+    transition: var(--transition-1);
+  }
+  
+  .headerActionBtn:is(:hover, :focus) {
+    color: var(--kappel);
+  }
+  
+  .headerActionBtn .btnBadge {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-color: var(--kappel);
+    color: var(--white);
+    font-family: var(--ff-league_spartan);
+    font-size: var(--fs-6);
+    min-width: 20px;
+    height: 20px;
+    border-radius: var(--radius-circle);
+  }
+  
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: -320px;
+    background-color: var(--white);
+    width: 100%;
+    max-width: 320px;
+    height: 100%;
+    z-index: 2;
+    transition: 0.25s var(--cubic-in);
+  }
+  
+  .navbarActive {
+    transform: translateX(320px);
+    transition: 0.5s var(--cubic-out);
+  }
+  
+  .navbarWrapper {
+    padding: 15px 20px;
+    border-block-end: 1px solid var(--platinum);
+  }
+  
+  .navCloseBtn {
+    background-color: var(--white);
+    box-shadow: var(--shadow-2);
+    padding: 8px;
+    border-radius: var(--radius-circle);
+  }
+  
+  .navCloseBtn:is(:hover, :focus) {
+    background-color: var(--kappel);
+    color: var(--white);
+  }
+  
+  .navbarList {
+    padding: 15px 20px;
+  }
+  
+  .navbarItem:not(:last-child) {
+    border-block-end: 1px solid var(--platinum);
+  }
+  
+  .navbarLink {
+    font-size: 16px !important;
+    padding-block: 8px;
+    font-weight: var(--fw-500);
+    transition: var(--transition-1);
+    text-decoration: none !important;
+    font-family: "League Spartan", sans-serif;
+  }
+  
+  .navbarLink:is(:hover, :focus) {
+    color: var(--kappel);
+  }
+  
+  .overlay {
+    position: fixed;
+    inset: 0;
+    background-color: var(--black_80);
+    pointer-events: none;
+    opacity: 0;
+    z-index: 1;
+    transition: var(--transition-1);
+  }
+  
+  .overlay.active {
+    opacity: 1;
+    pointer-events: all;
+  }
+  
+  /**
+     * responsive for large than 1200px screen
+     */
+  
+  @media (min-width: 1200px) {
+    /**
+       * CUSTOM PROPERTY
+       */
+  
+    :root {
+      /**
+         * typography
+         */
+  
+      --fs-1: 6.5rem;
+  
+      /**
+         * spacing
+         */
+  
+      --section-padding: 120px;
+    }
+  
+    /**
+       * REUSED STYLE
+       */
+  
+    .container {
+      max-width: 1185px;
+    }
+  
+    .shape {
+      display: block;
+    }
+  
+    .aboutContent,
+    .videoCard,
+    .blog {
+      position: relative;
+    }
+  
+    /**
+       * HEADER
+       */
+  
+    .headerActionBtn:last-child,
+    .navbar .wrapper,
+    .overlay {
+      display: none;
+    }
+  
+    .header.active {
+      transform: translateY(-100%);
+      animation: slideIn 0.5s ease forwards;
+    }
+  
+    @keyframes slideIn {
+      0% {
+        transform: translateY(-100%);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+  
+    .navbar,
+    .navbar.active {
+      all: unset;
+    }
+  
+    .navbarList {
+      display: flex;
+      gap: 50px;
+      padding: 0;
+    }
+  
+    .navbarItem:not(:last-child) {
+      border-block-end: none;
+    }
+  
+    .navbarLink {
+      color: var(--eerie-black-1);
+      padding-block: 20px;
+    }
+  
+    .header .btn {
+      margin-inline-end: 0;
+    }
+  }
+  
+  /******************************************/
+  
+  /*-----------------------------------*\
+    #style.css
+  \*-----------------------------------*/
+  
+  /**
+   * copyright 2022 codewithsadee
+   */
+  
+  /*-----------------------------------*\
+    #CUSTOM PROPERTY
+  \*-----------------------------------*/
+  
+  :root {
+    /**
+     * colors
+     */
+  
+    --selective-yellow: hsl(42, 94%, 55%);
+    --eerie-black-1: hsl(0, 0%, 9%);
+    --eerie-black-2: hsl(180, 3%, 7%);
+    --quick-silver: hsl(0, 0%, 65%);
+    --radical-red: hsl(351, 83%, 61%);
+    --light-gray: hsl(0, 0%, 80%);
+    --isabelline: hsl(36, 33%, 94%);
+    --gray-x-11: hsl(0, 0%, 73%);
+    --kappel_15: hsla(170, 75%, 41%, 0.15);
+    --platinum: hsl(0, 0%, 90%);
+    --gray-web: hsl(0, 0%, 50%);
+    --black_80: hsla(0, 0%, 0%, 0.8);
+    --white_50: hsla(0, 0%, 100%, 0.5);
+    --black_50: hsla(0, 0%, 0%, 0.5);
+    --black_30: hsla(0, 0%, 0%, 0.3);
+    --kappel: hsl(170, 75%, 41%);
+    --white: hsl(0, 0%, 100%);
+  
+    /**
+     * gradient color
+     */
+  
+    --gradient: linear-gradient(
+      -90deg,
+      hsl(151, 58%, 46%) 0%,
+      hsl(170, 75%, 41%) 100%
+    );
+  
+    /**
+     * typography
+     */
+  
+    --ff-league_spartan: "League Spartan", sans-serif;
+    --ff-poppins: "Poppins", sans-serif;
+  
+    --fs-1: 4.2rem;
+    --fs-2: 3.2rem;
+    --fs-3: 2.3rem;
+    --fs-4: 1.8rem;
+    --fs-5: 1.5rem;
+    --fs-6: 1.4rem;
+    --fs-7: 1.3rem;
+  
+    --fw-500: 500;
+    --fw-600: 600;
+  
+    /**
+     * spacing
+     */
+  
+    --section-padding: 75px;
+  
+    /**
+     * shadow
+     */
+  
+    --shadow-1: 0 6px 15px 0 hsla(0, 0%, 0%, 0.05);
+    --shadow-2: 0 10px 30px hsla(0, 0%, 0%, 0.06);
+    --shadow-3: 0 10px 50px 0 hsla(220, 53%, 22%, 0.1);
+  
+    /**
+     * radius
+     */
+  
+    --radius-pill: 500px;
+    --radius-circle: 50%;
+    --radius-3: 3px;
+    --radius-5: 5px;
+    --radius-10: 10px;
+  
+    /**
+     * transition
+     */
+  
+    --transition-1: 0.25s ease;
+    --transition-2: 0.5s ease;
+    --cubic-in: cubic-bezier(0.51, 0.03, 0.64, 0.28);
+    --cubic-out: cubic-bezier(0.33, 0.85, 0.4, 0.96);
+  }
+  
+  /*-----------------------------------*\
+    #RESET
+  \*-----------------------------------*/
+  
+  *,
+  *::before,
+  *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  li {
+    list-style: none;
+  }
+  
+  a,
+  img,
+  span,
+  data,
+  input,
+  button,
+  ion-icon {
+    display: block;
+  }
+  
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  
+  img {
+    height: auto;
+  }
+  
+  input,
+  button {
+    background: none;
+    border: none;
+    font: inherit;
+  }
+  
+  input {
+    width: 100%;
+  }
+  
+  button {
+    cursor: pointer;
+  }
+  
+  ion-icon {
+    pointer-events: none;
+  }
+  
+  address {
+    font-style: normal;
+  }
+  
+  html {
+    font-family: var(--ff-poppins);
+    font-size: 10px;
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    background-color: var(--white);
+    color: var(--gray-web);
+    font-size: 1.6rem;
+    line-height: 1.75;
+  }
+  
+  :focus-visible {
+    outline-offset: 4px;
+  }
+  
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background-color: hsl(0, 0%, 98%);
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: hsl(0, 0%, 80%);
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: hsl(0, 0%, 70%);
+  }
+  
+  /*-----------------------------------*\
+    #REUSED STYLE
+  \*-----------------------------------*/
+  
+  .container {
+    padding-inline: 15px;
+  }
+  
+  .section {
+    padding-block: var(--section-padding);
+  }
+  
+  .shape {
+    position: absolute;
+    display: none;
+  }
+  
+  .hasBgImage {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .h1,
+  .h2,
+  .h3 {
+    color: var(--eerie-black-1);
+    font-family: var(--ff-league_spartan);
+    line-height: 1;
+  }
+  
+  .h1,
+  .h2 {
+    font-weight: var(--fw-600);
+  }
+  
+  .h1 {
+    font-size: var(--fs-1);
+  }
+  
+  .h2 {
+    font-size: var(--fs-2);
+  }
+  
+  .h3 {
+    font-size: var(--fs-3);
+    font-weight: var(--fw-500);
+  }
+  
+  .sectionTitle {
+    --color: var(--radical-red);
+    text-align: center;
+  }
+  
+  .sectionTitle .span {
+    display: inline-block;
+    color: var(--color);
+  }
+  
+  .btn {
+    background-color: var(--kappel);
+    color: var(--white);
+    font-family: var(--ff-league_spartan);
+    font-size: var(--fs-4);
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    max-width: max-content;
+    padding: 10px 20px;
+    border-radius: var(--radius-5);
+    overflow: hidden;
+  }
+  
+  .hasBefore,
+  .hasAfter {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .hasBefore::before,
+  .hasAfter::after {
+    position: absolute;
+    content: "";
+  }
+  
+  .btn::before {
+    inset: 0;
+    background-image: var(--gradient);
+    z-index: -1;
+    border-radius: inherit;
+    transform: translateX(-100%);
+    transition: var(--transition-2);
+  }
+  
+  .btn:is(:hover, :focus)::before {
+    transform: translateX(0);
+  }
+  
+  .imgHolder {
+    aspect-ratio: var(--width) / var(--height);
+    background-color: var(--light-gray);
+    overflow: hidden;
+  }
+  
+  .imgCover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .sectionSubtitle {
+    font-size: var(--fs-5);
+    text-transform: uppercase;
+    font-weight: var(--fw-500);
+    letter-spacing: 1px;
+    text-align: center;
+    margin-block-end: 15px;
+  }
+  
+  .sectionText {
+    font-size: var(--fs-5);
+    text-align: center;
+    margin-block: 15px 25px;
+  }
+  
+  .gridList {
+    display: grid;
+    gap: 30px;
+  }
+  
+  .categoryCard,
+  .statsCard {
+    background-color: hsla(var(--color), 0.1);
+  }
+  
+  :is(.course, .blog) .sectionTitle {
+    margin-block-end: 40px;
+  }
+  
+  /*-----------------------------------*\
+    #HEADER
+  \*-----------------------------------*/
+  
+  .header .btn {
+    display: none;
+  }
+  
+  .header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--white);
+    padding-block: 12px;
+    box-shadow: var(--shadow-1);
+    z-index: 4;
+  }
+  
+  .header.active {
+    position: fixed;
+  }
+  
+  .header .container,
+  .headerActions,
+  .navbar .wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .headerActionBtn,
+  .navCloseBtn {
+    position: relative;
+    color: var(--eerie-black-1);
+    font-size: 24px;
+    transition: var(--transition-1);
+  }
+  
+  .headerActionBtn:is(:hover, :focus) {
+    color: var(--kappel);
+  }
+  
+  .headerActionBtn .btnBadge {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-color: var(--kappel);
+    color: var(--white);
+    font-family: var(--ff-league_spartan);
+    font-size: var(--fs-6);
+    min-width: 20px;
+    height: 20px;
+    border-radius: var(--radius-circle);
+  }
+  
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: -320px;
+    background-color: var(--white);
+    width: 100%;
+    max-width: 320px;
+    height: 100%;
+    z-index: 2;
+    transition: 0.25s var(--cubic-in);
+  }
+  
+  .navbar.active {
+    transform: translateX(320px);
+    transition: 0.5s var(--cubic-out);
+  }
+  
+  .navbar .wrapper {
+    padding: 15px 20px;
+    border-block-end: 1px solid var(--platinum);
+  }
+  
+  .navCloseBtn {
+    background-color: var(--white);
+    box-shadow: var(--shadow-2);
+    padding: 8px;
+    border-radius: var(--radius-circle);
+  }
+  
+  .navCloseBtn:is(:hover, :focus) {
+    background-color: var(--kappel);
+    color: var(--white);
+  }
+  
+  .navbarList {
+    padding: 15px 20px;
+  }
+  
+  .navbarItem:not(:last-child) {
+    border-block-end: 1px solid var(--platinum);
+  }
+  
+  .navbarLink {
+    padding-block: 8px;
+    font-weight: var(--fw-500);
+    transition: var(--transition-1);
+  }
+  
+  .navbarLink:is(:hover, :focus) {
+    color: var(--kappel);
+  }
+  
+  .overlay {
+    position: fixed;
+    inset: 0;
+    background-color: var(--black_80);
+    pointer-events: none;
+    opacity: 0;
+    z-index: 1;
+    transition: var(--transition-1);
+  }
+  
+  .overlay.active {
+    opacity: 1;
+    pointer-events: all;
+  }
+  
+  /*-----------------------------------*\
+    #HERO
+  \*-----------------------------------*/
+  
+  .hero {
+    padding-block-start: calc(var(--section-padding) + 80px);
+  }
+  
+  .hero .container {
+    display: grid;
+    gap: 40px;
+  }
+  
+  .heroText {
+    color: var(--eerie-black-1);
+    font-size: var(--fs-4);
+    text-align: center;
+    margin-block: 18px 20px;
+  }
+  
+  .hero .btn {
+    margin-inline: auto;
+  }
+  
+  .heroBanner {
+    display: grid;
+    grid-template-columns: 1fr 0.8fr;
+    align-items: flex-start;
+    gap: 30px;
+  }
+  
+  .heroBanner .imgHolder.one {
+    border-top-right-radius: 70px;
+    border-bottom-left-radius: 110px;
+  }
+  
+  .heroBanner .imgHolder.two {
+    border-top-left-radius: 50px;
+    border-bottom-right-radius: 90px;
+  }
+  
+  /*-----------------------------------*\
+    #CATEGORY
+  \*-----------------------------------*/
+  
+  .category .sectionSubtitle {
+    color: var(--radical-red);
+  }
+  
+  .category .sectionTitle {
+    --color: var(--kappel);
+  }
+  
+  .category .sectionText {
+    margin-block-end: 40px;
+  }
+  
+  .categoryCard {
+    padding: 50px 30px;
+    text-align: center;
+    border-radius: var(--radius-5);
+  }
+  
+  .categoryCard .cardIcon {
+    background-color: hsla(var(--color), 0.1);
+    width: 80px;
+    height: 80px;
+    display: grid;
+    place-items: center;
+    border-radius: var(--radius-circle);
+    margin-inline: auto;
+    margin-block-end: 30px;
+  }
+  
+  .categoryCard .cardText {
+    color: var(--eerie-black-1);
+    font-size: var(--fs-5);
+    margin-block: 15px 25px;
+  }
+  
+  .categoryCard .cardBadge {
+    background-color: hsla(var(--color), 0.1);
+    color: hsl(var(--color));
+    font-size: var(--fs-5);
+    font-weight: var(--fw-500);
+    padding: 2px 18px;
+    max-width: max-content;
+    margin-inline: auto;
+    border-radius: var(--radius-5);
+  }
+  
+  /*-----------------------------------*\
+    #ABOUT
+  \*-----------------------------------*/
+  
+  .about {
+    padding-block-start: 0;
+    overflow: hidden;
+  }
+  
+  .about .container {
+    display: grid;
+    gap: 30px;
+  }
+  
+  .aboutBanner {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .aboutBanner .imgHolder {
+    border-radius: var(--radius-10);
+  }
+  
+  .aboutShape2 {
+    display: block;
+    bottom: -100px;
+    left: -60px;
+    animation: bounce 2.5s infinite;
+  }
+  
+  @keyframes bounce {
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+      transform: translateY(0);
+    }
+  
+    40% {
+      transform: translateY(-30px);
+    }
+  
+    60% {
+      transform: translateY(-15px);
+    }
+  }
+  
+  .about :is(.sectionSubtitle, .sectionTitle, .sectionText) {
+    text-align: left;
+  }
+  
+  .aboutItem {
+    margin-block: 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .aboutItem ion-icon {
+    color: var(--selective-yellow);
+    font-size: 20px;
+    --ionicon-stroke-width: 50px;
+  }
+  
+  .aboutItem .span {
+    color: var(--eerie-black-1);
+    font-family: var(--ff-league_spartan);
+  }
+  
+  /*-----------------------------------*\
+    #COURSE
+  \*-----------------------------------*/
+  
+  .course {
+    background-color: var(--isabelline);
+  }
+  
+  .courseCard {
+    position: relative;
+    background-color: var(--white);
+    border-radius: var(--radius-5);
+    overflow: hidden;
+  }
+  
+  .courseCard .imgCover {
+    transition: var(--transition-2);
+  }
+  
+  .courseCard:is(:hover, :focus-within) .imgCover {
+    transform: scale(1.1);
+  }
+  
+  .courseCard :is(.absBadge, .badge) {
+    font-family: var(--ff-league_spartan);
+    border-radius: var(--radius-3);
+  }
+  
+  .courseCard .absBadge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: var(--selective-yellow);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    line-height: 1;
+    padding: 6px 8px;
+    padding-block-end: 3px;
+  }
+  
+  .courseCard .absBadge ion-icon {
+    font-size: 18px;
+    margin-block-end: 5px;
+    --ionicon-stroke-width: 50px;
+  }
+  
+  .courseCard .cardContent {
+    padding: 25px;
+  }
+  
+  .courseCard .badge {
+    background-color: var(--kappel_15);
+    max-width: max-content;
+    color: var(--kappel);
+    line-height: 25px;
+    padding-inline: 10px;
+  }
+  
+  .courseCard .cardTitle {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    margin-block: 15px 8px;
+    transition: var(--transition-1);
+  }
+  
+  .courseCard .cardTitle:is(:hover, :focus) {
+    color: var(--kappel);
+  }
+  
+  .courseCard :is(.wrapper, .ratingWrapper, .cardMetaList, .cardMetaItem) {
+    display: flex;
+    align-items: center;
+  }
+  
+  .courseCard .wrapper {
+    gap: 10px;
+  }
+  
+  .courseCard .ratingWrapper {
+    gap: 3px;
+  }
+  
+  .courseCard .ratingWrapper ion-icon {
+    color: var(--selective-yellow);
+  }
+  
+  .courseCard .ratingText {
+    color: var(--eerie-black-1);
+    font-size: var(--fs-6);
+    font-weight: var(--fw-500);
+  }
+  
+  .courseCard .price {
+    color: var(--radical-red);
+    font-family: var(--ff-league_spartan);
+    font-size: var(--fs-4);
+    font-weight: var(--fw-600);
+    margin-block: 8px 15px;
+  }
+  
+  .courseCard .cardMetaList {
+    flex-wrap: wrap;
+  }
+  
+  .courseCard .cardMetaItem {
+    position: relative;
+    gap: 5px;
+  }
+  
+  .courseCard .cardMetaItem:not(:last-child)::after {
+    content: "|";
+    display: inline-block;
+    color: var(--platinum);
+    padding-inline: 10px;
+  }
+  
+  .courseCard .cardMetaItem ion-icon {
+    color: var(--quick-silver);
+    --ionicon-stroke-width: 50px;
+  }
+  
+  .courseCard .cardMetaItem .span {
+    color: var(--eerie-black-1);
+    font-size: var(--fs-7);
+  }
+  
+  .course .btn {
+    margin-inline: auto;
+    margin-block-start: 60px;
+  }
+  
+  /*-----------------------------------*\
+    #VIDEO
+  \*-----------------------------------*/
+  
+  .video {
+    background-size: contain;
+    background-position: center top;
+  }
+  
+  .videoBanner {
+    position: relative;
+    border-top-right-radius: 80px;
+    border-bottom-left-radius: 120px;
+  }
+  
+  .video .playBtn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--radical-red);
+    font-size: 30px;
+    padding: 16px;
+    color: var(--white);
+    border-radius: var(--radius-circle);
+    box-shadow: 0 0 0 0 var(--white_50);
+    z-index: 1;
+    animation: pulse 3s ease infinite;
+  }
+  
+  @keyframes pulse {
+    0% {
+      box-shadow: 0 0 0 0 var(--white_50);
+    }
+    100% {
+      box-shadow: 0 0 0 20px transparent;
+    }
+  }
+  
+  .videoBanner::after {
+    inset: 0;
+    background-color: var(--black_30);
+  }
+  
+  /*-----------------------------------*\
+    #STATS
+  \*-----------------------------------*/
+  
+  .statsCard {
+    text-align: center;
+    padding: 25px;
+    border-radius: var(--radius-10);
+  }
+  
+  .statsCard :is(.cardTitle, .cardText) {
+    font-family: var(--ff-league_spartan);
+  }
+  
+  .statsCard .cardTitle {
+    color: hsl(var(--color));
+    font-size: var(--fs-2);
+    line-height: 1.1;
+  }
+  
+  .statsCard .cardText {
+    color: var(--eerie-black-1);
+    text-transform: uppercase;
+  }
+  
+  /*-----------------------------------*\
+    #BLOG
+  \*-----------------------------------*/
+  
+  .blogCard .cardBanner {
+    border-radius: var(--radius-10);
+  }
+  
+  .blogCard .cardBanner .imgCover {
+    transition: var(--transition-2);
+  }
+  
+  .blogCard .cardBanner::after {
+    inset: 0;
+    background-color: var(--black_50);
+    opacity: 0;
+    transition: var(--transition-1);
+  }
+  
+  .blogCard:is(:hover, :focus-within) .cardBanner .imgCover {
+    transform: scale(1.1);
+  }
+  
+  .blogCard:is(:hover, :focus-within) .cardBanner::after {
+    opacity: 1;
+  }
+  
+  .blogCard .cardContent {
+    position: relative;
+    margin-inline: 15px;
+    background-color: var(--white);
+    padding: 20px;
+    border-radius: var(--radius-10);
+    box-shadow: var(--shadow-3);
+    margin-block-start: -100px;
+    z-index: 1;
+  }
+  
+  .blogCard .cardBtn {
+    position: absolute;
+    top: -40px;
+    right: 30px;
+    background-color: var(--kappel);
+    color: var(--white);
+    font-size: 20px;
+    padding: 20px;
+    border-radius: var(--radius-circle);
+    transition: var(--transition-1);
+    opacity: 0;
+  }
+  
+  .blogCard .cardBtn:is(:hover, :focus) {
+    background-color: var(--radical-red);
+  }
+  
+  .blogCard:is(:hover, :focus-within) .cardBtn {
+    opacity: 1;
+    transform: translateY(10px);
+  }
+  
+  .blogCard :is(.cardMetaItem, .cardText, .cardSubtitle) {
+    font-size: var(--fs-5);
+  }
+  
+  .blogCard .cardSubtitle {
+    text-transform: uppercase;
+  }
+  
+  .blogCard .cardTitle {
+    margin-block: 10px 15px;
+    transition: var(--transition-1);
+  }
+  
+  .blogCard .cardTitle:is(:hover, :focus) {
+    color: var(--kappel);
+  }
+  
+  .blogCard :is(.cardMetaList, .cardMetaItem) {
+    display: flex;
+  }
+  
+  .blogCard .cardMetaList {
+    flex-wrap: wrap;
+    gap: 10px 20px;
+    margin-block-end: 20px;
+  }
+  
+  .blogCard .cardMetaItem {
+    gap: 10px;
+    align-items: center;
+    color: var(--eerie-black-1);
+  }
+  
+  .blogCard .cardMetaItem ion-icon {
+    color: var(--kappel);
+    font-size: 18px;
+    --ionicon-stroke-width: 40px;
+  }
+  
+  /*-----------------------------------*\
+    #FOOTER
+  \*-----------------------------------*/
+  
+  .footer {
+    background-repeat: no-repeat;
+    background-color: var(--eerie-black-2);
+    color: var(--gray-x-11);
+    font-size: var(--fs-5);
+  }
+  
+  .footerTop {
+    display: grid;
+    gap: 30px;
+  }
+  
+  .footerBrandText {
+    margin-block: 20px;
+  }
+  
+  .footerBrand .wrapper {
+    display: flex;
+    gap: 5px;
+  }
+  
+  .footerBrand .wrapper .span {
+    font-weight: var(--fw-500);
+  }
+  
+  .footerLink {
+    transition: var(--transition-1);
+  }
+  
+  .footerLink:is(:hover, :focus) {
+    color: var(--kappel);
+  }
+  
+  .footerListTitle {
+    color: var(--white);
+    font-family: var(--ff-league_spartan);
+    font-size: var(--fs-3);
+    font-weight: var(--fw-600);
+    margin-block-end: 10px;
+  }
+  
+  .footerList .footerLink {
+    padding-block: 5px;
+  }
+  
+  .newsletterForm {
+    margin-block: 20px 35px;
+  }
+  
+  .newsletterForm .inputField {
+    background-color: var(--white);
+    padding: 12px;
+    border-radius: var(--radius-5);
+    margin-block-end: 0;
+  }
+  
+  .newsletterForm .btn {
+    min-width: 100%;
+    justify-content: center;
+  }
+  
+  .socialList {
+    display: flex;
+    gap: 25px;
+  }
+  
+  .socialLink {
+    font-size: 20px;
+  }
+  
+  .footerBottom {
+    border-block-start: 1px solid var(--eerie-black-1);
+    padding-block: 30px;
+  }
+  
+  .copyright {
+    text-align: center;
+  }
+  
+  .copyrightLink {
+    color: var(--kappel);
+    display: inline-block;
+  }
+  
+  /*-----------------------------------*\
+    #BACK TO TOP
+  \*-----------------------------------*/
+  
+  .backTopBtn {
+    position: fixed;
+    bottom: 40px;
+    right: 30px;
+    background-color: var(--kappel);
+    color: var(--white);
+    font-size: 20px;
+    padding: 15px;
+    border-radius: var(--radius-circle);
+    z-index: 3;
+    opacity: 0;
+    pointer-events: none;
+    transition: var(--transition-1);
+  }
+  
+  .backTopBtn.active {
+    transform: translateY(10px);
+    opacity: 1;
+    pointer-events: all;
+  }
+  
+  /*-----------------------------------*\
+    #MEDIA QUERIES
+  \*-----------------------------------*/
+  
+  /**
+   * responsive for large than 575px screen
+   */
+  
+  @media (min-width: 575px) {
+    /**
+     * REUSED STYLE
+     */
+  
+    .container {
+      max-width: 520px;
+      width: 100%;
+      margin-inline: auto;
+    }
+  
+    .gridList {
+      grid-template-columns: 1fr 1fr;
+    }
+  
+    :is(.course, .blog) .gridList {
+      grid-template-columns: 1fr;
+    }
+  
+    /**
+     * HEADER
+     */
+  
+    .header .container {
+      max-width: unset;
+    }
+  
+    .headerActions {
+      gap: 30px;
+    }
+  
+    /**
+     * HERO
+     */
+  
+    .heroBanner {
+      grid-template-columns: 1fr 0.9fr;
+    }
+  
+    /**
+     * VIDEO
+     */
+  
+    .video .playBtn {
+      padding: 25px;
+    }
+  
+    /**
+     * STATS
+     */
+  
+    .statsCard {
+      padding: 40px 30px;
+    }
+  
+    /**
+     * FOOTER
+     */
+  
+    .footerBrand,
+    .footerList:last-child {
+      grid-column: 1 / 3;
+    }
+  
+    .newsletterForm {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+  
+    .newsletterForm .input-field {
+      margin-block-end: 0;
+    }
+  
+    .newsletterForm .btn {
+      min-width: max-content;
+    }
+  }
+  
+  /**
+   * responsive for large than 768px screen
+   */
+  
+  @media (min-width: 768px) {
+    /**
+     * CUSTOM PROPERTY
+     */
+  
+    :root {
+      /**
+       * typography
+       */
+  
+      --fs-1: 4.6rem;
+      --fs-2: 3.8rem;
+    }
+  
+    /**
+     * REUSED STYLE
+     */
+  
+    .container {
+      max-width: 720px;
+    }
+  
+    .btn {
+      padding: 15px 30px;
+    }
+  
+    :is(.course, .blog) .gridList {
+      grid-template-columns: 1fr 1fr;
+    }
+  
+    /**
+     * HEADER
+     */
+  
+    .header .container {
+      padding-inline: 30px;
+    }
+  
+    .header .btn {
+      display: flex;
+      padding: 10px 30px;
+      margin-inline: 20px;
+    }
+  
+    /**
+     * HERO
+     */
+  
+    .hero {
+      padding-block-start: calc(var(--section-padding) + 90px);
+    }
+  
+    .hero .container {
+      gap: 50px;
+    }
+  
+    .heroText {
+      margin-block-end: 30px;
+    }
+  
+    .heroBanner {
+      position: relative;
+      z-index: 1;
+    }
+  
+    .heroBanner .imgHolder {
+      max-width: max-content;
+    }
+  
+    .heroBanner .imgHolder.one {
+      justify-self: flex-end;
+    }
+  
+    .heroBanner .imgHolder.two {
+      margin-block-start: 100px;
+    }
+  
+    .heroShape1 {
+      display: block;
+      position: absolute;
+      bottom: -40px;
+      left: -10px;
+    }
+  
+    /**
+     * ABOUT
+     */
+  
+    .about {
+      padding-block-start: 50px;
+    }
+  
+    .aboutBanner {
+      padding: 60px;
+      padding-inline-end: 0;
+    }
+  
+    .aboutBanner .imgHolder {
+      max-width: max-content;
+      margin-inline: auto;
+    }
+  
+    .aboutShape1 {
+      display: block;
+      top: -40px;
+      right: -70px;
+    }
+  
+    /**
+     * FOOTER
+     */
+  
+    .footerBrand,
+    .footerList:last-child {
+      grid-column: auto;
+    }
+  
+    .newsletterForm .btn {
+      padding-block: 10px;
+    }
+  }
+  
+  /**
+   * responsive for large than 992px screen
+   */
+  
+  @media (min-width: 992px) {
+    /**
+     * CUSTOM PROPERTY
+     */
+  
+    :root {
+      /**
+       * typography
+       */
+  
+      --fs-1: 5.5rem;
+      --fs-2: 4.5rem;
+    }
+  
+    /**
+     * REUSED STYLE
+     */
+  
+    .container {
+      max-width: 960px;
+    }
+  
+    .gridList {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  
+    :is(.course, .blog) .gridList {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  
+    /**
+     * HERO
+     */
+  
+    .hero .container {
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+    }
+  
+    .hero .sectionTitle,
+    .heroText {
+      text-align: left;
+    }
+  
+    .hero .btn {
+      margin-inline: 0;
+    }
+  
+    /**
+     * ABOUT
+     */
+  
+    .about .container {
+      grid-template-columns: 1fr 0.6fr;
+      align-items: center;
+      gap: 60px;
+    }
+  
+    /**
+     * VIDEO
+     */
+  
+    .videoBanner {
+      max-width: 75%;
+      margin-inline: auto;
+    }
+  
+    /**
+     * FOOTER
+     */
+  
+    .footer .gridList {
+      grid-template-columns: 1fr 0.6fr 0.6fr 1.2fr;
+    }
+  }
+  
+  /**
+   * responsive for large than 1200px screen
+   */
+  
+  @media (min-width: 1200px) {
+    /**
+     * CUSTOM PROPERTY
+     */
+  
+    :root {
+      /**
+       * typography
+       */
+  
+      --fs-1: 6.5rem;
+  
+      /**
+       * spacing
+       */
+  
+      --section-padding: 120px;
+    }
+  
+    /**
+     * REUSED STYLE
+     */
+  
+    .container {
+      max-width: 1185px;
+    }
+  
+    .shape {
+      display: block;
+    }
+  
+    .aboutContent,
+    .videoCard,
+    .blog {
+      position: relative;
+    }
+  
+    /**
+     * HEADER
+     */
+  
+    .headerActionBtn:last-child,
+    .navbar .wrapper,
+    .overlay {
+      display: none;
+    }
+  
+    .header.active {
+      transform: translateY(-100%);
+      animation: slideIn 0.5s ease forwards;
+    }
+  
+    @keyframes slideIn {
+      0% {
+        transform: translateY(-100%);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+  
+    .navbar,
+    .navbar.active {
+      all: unset;
+    }
+  
+    .navbarList {
+      display: flex;
+      gap: 50px;
+      padding: 0;
+    }
+  
+    .navbarItem:not(:last-child) {
+      border-block-end: none;
+    }
+  
+    .navbarLink {
+      color: var(--eerie-black-1);
+      padding-block: 20px;
+    }
+  
+    .header .btn {
+      margin-inline-end: 0;
+    }
+  
+    /**
+     * HERO
+     */
+  
+    .hero {
+      padding-block-start: calc(var(--section-padding) + 120px);
+    }
+  
+    .hero .container {
+      gap: 80px;
+    }
+  
+    .heroShape2 {
+      top: -80px;
+      z-index: -1;
+    }
+  
+    /**
+     * ABOUT
+     */
+  
+    .about .container {
+      gap: 110px;
+    }
+  
+    .aboutBanner .imgHolder {
+      margin-inline: 0;
+    }
+  
+    .aboutShape3 {
+      top: -20px;
+      left: -100px;
+      z-index: -1;
+    }
+  
+    .aboutContent {
+      z-index: 1;
+    }
+  
+    .aboutShape4 {
+      top: 30px;
+      right: -60px;
+      z-index: -1;
+    }
+  
+    /**
+     * VIDEO
+     */
+  
+    .videoShape1 {
+      top: -50px;
+      left: 0;
+    }
+  
+    .videoShape2 {
+      top: -80px;
+      right: 120px;
+      z-index: 1;
+    }
+  
+    /**
+     * BLOG
+     */
+  
+    .blogShape {
+      top: 0;
+      left: 0;
+    }
+  
+    li {
+      list-style: none;
+      display: inline-block;
+      margin: 0 4px;
+    }
+  }
+  
